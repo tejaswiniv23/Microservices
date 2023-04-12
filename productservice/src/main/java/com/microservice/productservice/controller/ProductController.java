@@ -62,7 +62,4 @@ public class ProductController {
         productService.reduceQuantity(productId,quantity);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-    
-
 }
