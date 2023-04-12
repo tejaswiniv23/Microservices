@@ -48,6 +48,15 @@ public class ProductController {
         return new ResponseEntity<>(productResponse, HttpStatus.OK);
     }
 	
+	@GetMapping("/{message}")
+    public ResponseEntity<ProductResponse> getProductError(@PathVariable("message") String message) {
+
+        log.info("ProductController | getProductError is called");
+        log.info("ProductController | getProductError | productId : " + message);
+
+        return new Exception(message);
+    }
+	
 	@DeleteMapping("/{id}")
     public void deleteProductById(@PathVariable("id") long productId) {
         productService.deleteProductById(productId);

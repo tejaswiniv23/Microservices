@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.microservice.orderservice.dto.OrderRequest;
 import com.microservice.orderservice.dto.OrderResponse;
 import com.microservice.orderservice.service.OrderService;
+import com.microservice.productservice.dto.ProductResponse;
+import com.microservice.orderservice.fiegnCommunication.ProductService;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import lombok.extern.log4j.Log4j2;
 
 @RestController
@@ -24,6 +28,7 @@ public class OrderController {
 	@Autowired
 	OrderService orderService;
 	
+	
 	 @PostMapping("/placeOrder")
 	    public ResponseEntity<Object> placeOrder(@RequestBody OrderRequest orderRequest) {
 
@@ -31,15 +36,14 @@ public class OrderController {
 
 	        return new ResponseEntity<>(orderService.placeOrder(orderRequest), HttpStatus.OK);
 	    }
-	 
+	
 	 @GetMapping("/{orderId}")
-	 public ResponseEntity<OrderResponse> getOrderDetails(@PathVariable String orderId){
+	 public ResponseEntity<OrderResponse> getOrderDetails(@PathVariable("orderId") String orderId){
 		 
 		 log.info("OrderController | getOrderDetails is called |  orderId :"+ orderId);
 
 	        return new ResponseEntity<>(orderService.getOrderDetails(orderId), HttpStatus.OK);
 		 
 	 }
-
 
 }

@@ -120,7 +120,8 @@ public class OrderServiceImpl implements OrderService {
 		OrderResponse.ProductDetails productDeatils = OrderResponse.ProductDetails.builder()
 				.productId(order.getProductId())
 				.productName(productResponse.getProductName())
-				.price(productResponse.getPrice()).build();
+				.price(productResponse.getPrice())
+				.build();
 		
 		OrderResponse.PaymentDetails paymentDetails = OrderResponse.PaymentDetails.builder()
 				.paymentDate(paymentResponse.getPaymentDate())

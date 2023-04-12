@@ -6,11 +6,11 @@ import com.microservice.orderservice.fiegnCommunication.ProductService;
 import com.microservice.productservice.dto.ProductResponse;
 
 @Component
-public class ProductFallBack  implements ProductService{
+public class ProductFallBack  {
 
-	@Override
-	public ProductResponse getProductById(long productId) {
-		return new ProductResponse();
-	}
+	/*
+	 * @Override public ProductResponse getProductById(long productId) { return new
+	 * ProductResponse(); }
+	 */
 
 }
